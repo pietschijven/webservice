@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: MyString
+  cost: 1.5
+  common: 1
+
+two:
+  user: MyString
+  cost: 1.5
+  common: 1
