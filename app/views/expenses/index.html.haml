@@ -17,8 +17,5 @@
         %td= expense.month
         %td= expense.paid_for_user
         %td= link_to 'More information', expense
-        /%td= link_to 'Edit', edit_expense_path(expense)
-        /%td= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' }
-
 %br
 = link_to 'Add a new expense', new_expense_path

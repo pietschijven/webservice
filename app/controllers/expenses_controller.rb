@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   before_filter :restrict_access, :if => lambda{ |controller| controller.request.format.json? } 
 
   def index
-    @expenses = Expense.all
+    @expenses = Expense.all     
   end
 
   def show
@@ -58,7 +58,7 @@ class ExpensesController < ApplicationController
   
   # Never trust parameters from the scary internet, only allow the white list through.
   def expense_params
-    params.require(:expense).permit(:user, :cost, :common)
+    params.require(:expense).permit(:user_id, :cost, :common)
   end
     
   def restrict_access
