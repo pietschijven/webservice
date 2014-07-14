@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711133130) do
+ActiveRecord::Schema.define(version: 20140714202705) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
@@ -21,13 +21,14 @@ ActiveRecord::Schema.define(version: 20140711133130) do
 
   create_table "expenses", force: true do |t|
     t.float    "cost"
-    t.integer  "paid_for_user"
+    t.integer  "paid_for_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "month"
     t.integer  "user_id"
   end
 
+  add_index "expenses", ["paid_for_user_id"], name: "index_expenses_on_paid_for_user_id"
   add_index "expenses", ["user_id"], name: "index_expenses_on_user_id"
 
   create_table "users", force: true do |t|

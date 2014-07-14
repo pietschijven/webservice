@@ -1,0 +1,17 @@
+%h1 Listing users
+
+%table{:class => "users"}
+  %thead
+    %tr
+      %th User name
+      %th Salary
+      %th 
+
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.name
+        %td= user.salary
+        %td= link_to 'More information', user
+%br
+= link_to 'Add a new user', new_user_path
