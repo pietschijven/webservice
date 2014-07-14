@@ -51,11 +51,12 @@ class ExpensesController < ApplicationController
   end
 
   private
+  
   def set_expense
     @expense = Expense.find(params[:id])
   end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
+  
+  # Never trust parameters from the scary internet, only allow the white list through.
   def expense_params
     params.require(:expense).permit(:user, :cost, :common)
   end
