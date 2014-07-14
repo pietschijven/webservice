@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @expense.user.name
+%p
+  %strong Cost:
+  = @expense.cost
+%p
+  %strong Common:
+  = @expense.paid_for_user
+  
+= link_to 'Edit', edit_expense_path(@expense) |
+= link_to 'Back', expenses_path 
