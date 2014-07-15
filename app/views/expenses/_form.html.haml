@@ -16,8 +16,12 @@
     %br
       = f.text_field :cost
   .field
-    = f.label :paid_for_user
+    = f.label :month
     %br
-      = f.collection_select :paid_for_user, User.order(:name), :id, :name, include_blank: true
+      = f.text_field :month
+  .field
+    = f.label :paid_for_user_id
+    %br
+      = f.collection_select :paid_for_user_id, User.order(:name), :id, :name, include_blank: true
   .actions
     = f.submit

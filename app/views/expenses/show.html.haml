@@ -5,9 +5,13 @@
 %p
   %strong Cost:
   = @expense.cost
+  Euro
 %p
-  %strong Common:
-  = @expense.paid_for_user
+  %strong Month:
+  = @expense.month
+%p
+  %strong Paid for user:
+  = @expense.paid_for_user_name
   
 = link_to 'Edit', edit_expense_path(@expense) |
 = link_to 'Back', expenses_path 
