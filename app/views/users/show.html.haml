@@ -1,0 +1,10 @@
+%p#notice= notice
+%p
+  %strong Username:
+  = @user.name
+%p
+  %strong Salary:
+  = @user.salary
+  
+= link_to 'Edit', edit_user_path(@user) |
+= link_to 'Back', users_path 

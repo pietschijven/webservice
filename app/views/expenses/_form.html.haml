@@ -8,17 +8,20 @@
         - @expense.errors.full_messages.each do |message|
           %li= message
   .field
-    = f.label :user
+    = f.label "User name"
     %br
-      - @user = @expense.user
-      = text_field(:user, :name)
+      = f.collection_select :user_id, User.order(:name), :id , :name
   .field
     = f.label :cost
     %br
       = f.text_field :cost
   .field
-    = f.label :paid_for_user
+    = f.label :month
     %br
-      = f.number_field :paid_for_user
+      = f.text_field :month
+  .field
+    = f.label :paid_for_user_id
+    %br
+      = f.collection_select :paid_for_user_id, User.order(:name), :id, :name, include_blank: true
   .actions
     = f.submit

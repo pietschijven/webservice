@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   before_filter :restrict_access, :if => lambda{ |controller| controller.request.format.json? } 
 
   def index
-    @expenses = Expense.all
+    @expenses = Expense.all     
   end
 
   def show
@@ -58,7 +58,12 @@ class ExpensesController < ApplicationController
   
   # Never trust parameters from the scary internet, only allow the white list through.
   def expense_params
-    params.require(:expense).permit(:user, :cost, :common)
+    p = params[:expense]
+    if p[:paid_for_user_id].blank? or ( p[:user_id] == p[:paid_for_user_id] )
+      params[:expense][:paid_for_user_id] = nil
+      flash[:warning] = "User cannot pay for itself. Paid for user has been set to nil"
+    end
+    params.require(:expense).permit(:user_id, :cost, :common, :paid_for_user_id, :month)  
   end
     
   def restrict_access
