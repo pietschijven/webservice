@@ -14,7 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'node', '~> 0.0.2'
 gem 'haml'
 
-gem 'spring', group: :development
+#gem 'spring', group: :development
 
 group :production do
   gem 'pg'

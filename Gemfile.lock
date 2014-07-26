@@ -223,7 +223,6 @@ DEPENDENCIES
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  spring
   spring-commands-rspec
   sqlite3
   turbolinks
