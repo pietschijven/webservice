@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714202705) do
+ActiveRecord::Schema.define(version: 20140726112012) do
 
   create_table "api_keys", force: true do |t|
     t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "balances", force: true do |t|
+    t.date     "month"
+    t.text     "balance_check"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
