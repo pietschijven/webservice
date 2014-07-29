@@ -5,7 +5,7 @@
     %tr
       %th Username
       %th Cost (Euro)
-      %th Month
+      %th Time period
       %th Paid for user
       %th 
 
@@ -14,7 +14,7 @@
       %tr
         %td= expense.user.name
         %td= expense.cost
-        %td= expense.month
+        %td= expense.time_period.try(:strftime, "%B %Y")
         %td= expense.paid_for_user_name
         %td= link_to 'More information', expense
 %br

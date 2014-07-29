@@ -7,8 +7,8 @@
   = @expense.cost
   Euro
 %p
-  %strong Month:
-  = @expense.month
+  %strong Time period:
+  = @expense.time_period.try(:strftime, "%B %Y")
 %p
   %strong Paid for user:
   = @expense.paid_for_user_name

@@ -40,23 +40,6 @@ describe BalancesController, :type => :controller do
   end
   
   describe "POST #create" do
-    #context "with valid attributes" do
-    #  let(:good_attribs) {FactoryGirl.attributes_for :balance}
-    #  
-    #  it "saves the new balance in the database" do
-    #    expect{post :create, balance:good_attribs}.to change(Balance,:count).by 1
-    #  end
-    #  
-    #  it "redirects to the main page" do
-    #    post :create, balance:good_attribs
-    #    expect( response ).to redirect_to Balance.last
-    #  end
-    #end
-    
-    #context "with invalid attributes" do
-    #  it "does not save the new balance in the database"
-    #  it "re-renders the :new template"
-    #end
     context 'with valid attributes' do
       let(:good_attribs) {FactoryGirl.attributes_for :balance}
       it 'saves the new balance in the database' do

@@ -16,9 +16,9 @@
     %br
       = f.text_field :cost
   .field
-    = f.label :month
+    = f.label :time_period
     %br
-      = f.text_field :month
+      = f.date_select :time_period, :order => [:month, :year]
   .field
     = f.label :paid_for_user_id
     %br
