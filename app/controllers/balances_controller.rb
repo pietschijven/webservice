@@ -13,10 +13,10 @@ class BalancesController < ApplicationController
   
   def create
     @balance = Balance.new balance_params
-    if @balance.save
-      redirect_to @balance
-    else
+    if @balance.create_balance
       redirect_to balances_path
+    else
+      redirect_to @balance
     end
   end
   

@@ -68,7 +68,10 @@ describe BalancesController, :type => :controller do
         expect(response).to redirect_to balances_path
       end
       
-      it 'calls Balance#compute_balance(date)'
+      it 'calls Balance#create_balance(date)' do
+        post :create, balance:good_attribs
+        expect(assigns(:balance)).to receive(:create_balance).with(no_args)
+      end
     end
     
     context 'with invalid attributes' do
@@ -78,7 +81,10 @@ describe BalancesController, :type => :controller do
       
       let(:bad_attribs){ FactoryGirl.attributes_for :balance }
       
-      it 'does not save the new balance in the database'
+      it 'does not save the new balance in the database' do
+        expect{ post :create, balance:bad_attribs}.to change(Balance, :count).by 0
+      end
+      
       it 're-renders the new template with a warning' do
         post :create, balance:bad_attribs
         expect(response).to render_template :new
