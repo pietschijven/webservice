@@ -11,7 +11,7 @@
   = @expense.time_period.try(:strftime, "%B %Y")
 %p
   %strong Paid for user:
-  = @expense.paid_for_user_name
+  = @expense.paid_for_user.try :name
   
 = link_to 'Edit', edit_expense_path(@expense) |
 = link_to 'Back', expenses_path 
