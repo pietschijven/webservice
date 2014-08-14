@@ -12,8 +12,4 @@ class Expense < ActiveRecord::Base
   
   validates_with ExpensesValidator
   
-  def paid_for_user_name
-    expense = Expense.find(self.id)
-    expense.paid_for_user.nil? ? "" : expense.paid_for_user.name
-  end
 end
