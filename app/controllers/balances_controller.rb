@@ -27,6 +27,6 @@ class BalancesController < ApplicationController
   end
   
   def balance_params
-    params.require(:balance).permit(:month)
+    params.require(:balance).permit(:time_period)
   end
 end

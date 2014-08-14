@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :balance do
-    month "2014-07-26"
+    time_period Date.parse("2014-07-1")
     balance_check "MyText"
   end
 end
