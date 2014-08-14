@@ -12,4 +12,15 @@ class Expense < ActiveRecord::Base
   
   validates_with ExpensesValidator
   
+  def self.expenses_in_time_period(date)
+    Expense.where time_period: date
+  end
+  
+  def self.total_cost(expenses=nil)
+    if expenses.nil? 
+      all.map{|e| e.cost}.sum
+    else
+      where(id: expenses).map{|e| e.cost}.sum
+    end
+  end
 end
