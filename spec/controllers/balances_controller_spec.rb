@@ -51,9 +51,11 @@ describe BalancesController, :type => :controller do
         expect(response).to redirect_to balances_path
       end
       
-      it 'calls Balance#create_balance(date)' do
+      it 'calls Balance#create_balance' do
+        new_balance = Balance.new
+        Balance.stub(:new).and_return(new_balance)
+        expect(new_balance).to receive(:create_balance).with(no_args).and_return(true)
         post :create, balance:good_attribs
-        expect(assigns(:balance)).to receive(:create_balance).with(no_args)
       end
     end
     
@@ -70,7 +72,7 @@ describe BalancesController, :type => :controller do
       
       it 're-renders the new template with a warning' do
         post :create, balance:bad_attribs
-        expect(response).to render_template :new
+        expect(response).to redirect_to new_balance_path 
       end
     end
   end

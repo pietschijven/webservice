@@ -16,7 +16,8 @@ class BalancesController < ApplicationController
     if @balance.create_balance
       redirect_to balances_path
     else
-      redirect_to @balance
+      flash[:warning] = "You have already created a balance for this particular month"
+      redirect_to new_balance_path
     end
   end
   
