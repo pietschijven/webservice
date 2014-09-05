@@ -3,17 +3,22 @@ class Balance < ActiveRecord::Base
   serialize :balance_check, Hash
   
   def create_balance
-    balance_data = compute_balance self.time_period 
-    self.balance_check = balance_data
+    self.balance_check = compute_balance(self.time_period)
     self.save
   end
   
-  private
+  def time_period_string
+    time_period.try(:strftime, "%B %Y")
+  end
+  
+  def total_balance
+    balance_check.values.inject(0) {|result, element| result + element.abs}
+  end
   
   def compute_balance(date)
     expenses_list = Expense.expenses_in_time_period date
     total_costs = expenses_list.total_cost
-    balance = {}
+    balance = Hash.new
     
     User.all.each do |u|
       user_expenses = expenses_list.where user_id: u.id

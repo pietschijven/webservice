@@ -5,6 +5,7 @@ class BalancesController < ApplicationController
   end
   
   def show
+    @balance_check = @balance.balance_check
   end
   
   def new
