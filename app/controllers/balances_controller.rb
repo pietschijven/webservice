@@ -1,5 +1,5 @@
 class BalancesController < ApplicationController
-  before_action :set_balance, only: [:show]
+  before_action :set_balance, only: [:show, :edit, :update]
   def index
     @balance_checks = Balance.all
   end
@@ -19,6 +19,14 @@ class BalancesController < ApplicationController
     else
       flash[:warning] = "You have already created a balance for this particular month"
       redirect_to new_balance_path
+    end
+  end
+  
+  def update
+    if @balance.update_balance balance_params
+      redirect_to balances_path
+    else
+      redirect_to edit_balance_path(@balance)
     end
   end
   

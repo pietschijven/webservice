@@ -7,6 +7,11 @@ class Balance < ActiveRecord::Base
     self.save
   end
   
+  def update_balance(params)
+    self.update params
+    create_balance
+  end
+  
   def time_period_string
     time_period.try(:strftime, "%B %Y")
   end
