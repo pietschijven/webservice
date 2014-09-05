@@ -12,6 +12,9 @@ class BalancesController < ApplicationController
     @balance = Balance.new
   end
   
+  def edit
+  end
+  
   def create
     @balance = Balance.new balance_params
     if @balance.create_balance
@@ -26,7 +29,7 @@ class BalancesController < ApplicationController
     if @balance.update_balance balance_params
       redirect_to balances_path
     else
-      redirect_to edit_balance_path(@balance)
+      render :edit
     end
   end
   
