@@ -1,0 +1,15 @@
+= form_for(@balance) do |f|
+  - if @balance.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@balance.errors.count, "error")
+        prohibited this expense from being saved:
+      %ul
+        - @balance.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :date
+    %br
+      = f.date_select :time_period, :order => [:month, :year]
+  .actions
+    = f.submit

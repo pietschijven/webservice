@@ -1,0 +1,19 @@
+%h1 Listing monthly account balances
+
+%table{:class => "balances"}
+  %thead
+    %tr
+      %th Time period
+      %th Total costs
+      %th 
+
+  %tbody
+    - @balance_checks.each do |balance|
+      %tr
+        %td= balance.time_period_string
+        %td= sprintf('%.2f',balance.total_balance.round(2))
+        %td= link_to 'More details', balance
+%br
+= link_to 'Create a new account balance', new_balance_path
+%br
+= link_to 'Add more expenses', expenses_path
