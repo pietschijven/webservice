@@ -63,4 +63,53 @@ describe ExpensesController, :type => :controller do
       end
     end
   end
+  
+  describe 'PUT update' do
+    context 'valid attributes' do
+      before(:each) do
+        @test_expense = FactoryGirl.create(:expense, cost:24.0)
+        put :update, id: @test_expense, expense:FactoryGirl.attributes_for(:expense)
+      end
+      it "located the requested @expense" do
+        assigns(:expense).should eq @test_expense
+      end
+      it "changes @test_expense's attributes" do
+        @test_expense.reload
+        @test_expense.cost.should eq(2.45)
+      end
+      it "redirects to the updated expense" do
+        expect(response).to redirect_to @test_expense
+      end
+    end
+    
+    context 'invalid attributes' do
+      before(:each) do
+        @test_expense = FactoryGirl.create(:expense, cost:24.0)
+        put :update, id: @test_expense, expense:FactoryGirl.attributes_for(:invalid_expense)
+      end
+      it "located the requested @expense" do
+        assigns(:expense).should eq @test_expense
+      end
+      it "should not change @test_expense's attributes" do
+        @test_expense.reload
+        @test_expense.cost.should_not eq 2.45
+      end
+      it "should re-render the edit template" do
+        expect(response).to render_template :edit
+      end
+    end
+  end
+  
+  describe 'DELETE #destroy' do
+    before(:each) do
+      @test_expense = FactoryGirl.create :expense
+    end
+    it "deletes the expense" do
+      expect{delete :destroy, id: @test_expense}.to change(Expense, :count).by -1
+    end
+    it "re-directs to #index" do
+      delete :destroy, id: @test_expense
+      expect(response).to redirect_to expenses_path
+    end
+  end
 end
