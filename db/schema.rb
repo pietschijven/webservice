@@ -11,28 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140814140104) do
+ActiveRecord::Schema.define(version: 20140916105316) do
 
   create_table "api_keys", force: true do |t|
-    t.string   "access_token"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "access_token"
   end
 
   create_table "balances", force: true do |t|
-    t.date     "time_period"
-    t.text     "balance_check"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.date "time_period"
+    t.text "balance_check"
   end
 
   create_table "expenses", force: true do |t|
-    t.float    "cost"
-    t.integer  "paid_for_user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.date     "time_period"
+    t.float   "cost"
+    t.integer "paid_for_user_id"
+    t.integer "user_id"
+    t.date    "time_period"
   end
 
   add_index "expenses", ["paid_for_user_id"], name: "index_expenses_on_paid_for_user_id"
