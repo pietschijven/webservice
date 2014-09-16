@@ -12,15 +12,22 @@ module Api
     end
     
     def create
-      respond_with User.create params[:user]
+      respond_with User.create user_params
     end
     
     def update
-      respond_with User.update(params[:id], params[:user])
+      respond_with User.update(params[:id], user_params)
     end
     
     def destroy
       respond_with User.destroy params[:id]
     end
+    
+    private 
+    
+    def user_params
+      params.require(:user).permit(:name, :salary)
+    end
+    
   end
 end
