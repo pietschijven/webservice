@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'node', '~> 0.0.2'
 gem 'haml'
+gem 'simple-navigation'
 
 #gem 'spring', group: :development
 

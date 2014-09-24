@@ -1,10 +1,10 @@
-%h1 Listing expenses
+%h1 All expenses
 
 %table{:class => "expenses"}
   %thead
     %tr
       %th Username
-      %th Cost (Euro)
+      %th Cost
       %th Time period
       %th Paid for user
       %th 
@@ -19,5 +19,3 @@
         %td= link_to 'More information', expense
 %br
 = link_to 'Add a new expense', new_expense_path
-%br
-= link_to 'Overview of total balances', balances_path

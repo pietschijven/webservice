@@ -33,3 +33,8 @@ table, td, th {
 th {
   border-bottom: 5px solid #DDD; 
 }
+
+#content {
+  float: right;
+  width: 85%
+}
