@@ -1,8 +1,5 @@
 %h1= "Details of the balance in #{@balance.time_period_string}"
-%br
-= "Total costs in this month: #{sprintf('%.2f',@balance.total_balance.round(2))} Euro"
-%br
-%br
+%h4= "Total costs in this month: #{sprintf('%.2f',@balance.total_balance.round(2))} Euro"
 %table{:class => "balances"}
   %thead
     %tr
@@ -14,6 +11,20 @@
       %tr
         %td= User.find(key).name
         %td= sprintf('%.2f', balance)
+        
+%h4 Detailed list of expenses in this month
+
+%table{:class => "expenses"}
+  %thead
+    %tr
+      %th User
+      %th Cost
+
+  %tbody
+    - @expenses.each do |expense|
+      %tr
+        %td= expense.user.name
+        %td= expense.cost
 %br
 
 = link_to 'Edit', edit_balance_path(@balance) |

@@ -6,6 +6,7 @@ class BalancesController < ApplicationController
   
   def show
     @balance_check = @balance.balance_check
+    @expenses = Expense.expenses_in_time_period @balance.time_period
   end
   
   def new
