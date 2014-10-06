@@ -1,5 +1,5 @@
 %h1= "Details of the balance in #{@balance.time_period_string}"
-%h4= "Total costs in this month: #{sprintf('%.2f',@balance.total_balance.round(2))} Euro"
+%h4= "Total net balance in this month: #{sprintf('%.2f',@balance.total_balance.round(2))} Euro"
 %table{:class => "balances"}
   %thead
     %tr
