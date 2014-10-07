@@ -4,11 +4,13 @@ module Api
     respond_to :json
     
     def index
-      respond_with Balance.all
+      #respond_with Balance.all
+      @balances = Balance.all
     end
     
     def show
-      respond_with Balance.find params[:id]
+      #respond_with Balance.find params[:id]
+      @balance = Balance.find params[:id]
     end
     
     def create
@@ -23,6 +25,12 @@ module Api
     
     def destroy
       respond_with Balance.destroy params[:id]
+    end
+    
+    private
+    
+    def balance_params
+      params.require(:balance).permit(:time_period)
     end
   end
   

@@ -1,4 +1,4 @@
-json.array!(@expenses) do |expense|
+json.array! @expenses do |expense|
   json.id expense.id
   json.user expense.user.name
   json.cost expense.cost

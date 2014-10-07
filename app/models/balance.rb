@@ -20,6 +20,15 @@ class Balance < ActiveRecord::Base
     balance_check.values.inject(0) {|result, element| result + element.abs}
   end
   
+  def balance_check_with_usernames
+    b = Hash.new
+    balance_check.each do |k,v|
+      key = User.find(k).name
+      b[key] = v 
+    end
+    return b
+  end
+  
   def compute_balance(date)
     expenses_list = Expense.expenses_in_time_period date
     total_costs = expenses_list.total_cost
@@ -34,4 +43,5 @@ class Balance < ActiveRecord::Base
     
     return balance
   end
+  
 end

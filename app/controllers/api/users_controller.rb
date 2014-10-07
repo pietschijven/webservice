@@ -4,11 +4,13 @@ module Api
     respond_to :json
     
     def index
-      respond_with User.all
+      #respond_with User.all
+      @users = User.all
     end
     
     def show
-      respond_with User.find params[:id]
+      #respond_with User.find params[:id]
+      @user = User.find params[:id]
     end
     
     def create
