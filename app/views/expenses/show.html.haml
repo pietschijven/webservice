@@ -1,18 +1,18 @@
 /*%p#notice= notice*/
-%h1 Expense details
+/*%h1 Detaillierte Information zur Ausgabe*/
 %p
-  %strong User:
+  %strong Benutzer:
   = @expense.user.name
 %p
-  %strong Cost:
+  %strong Ausgabe:
   = @expense.cost
   Euro
 %p
-  %strong Time period:
+  %strong Datum:
   = @expense.time_period.try(:strftime, "%B %Y")
 %p
-  %strong Paid for user:
+  %strong Ausgelegt für:
   = @expense.paid_for_user.try :name
   
-= link_to 'Edit', edit_expense_path(@expense) |
-= link_to 'Back', expenses_path 
+= link_to 'Ausgabe ändern', edit_expense_path(@expense) |
+= link_to 'Zurück', expenses_path 

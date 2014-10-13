@@ -1,10 +1,10 @@
-%h1 All Users
+%h1 Alle Benutzer
 
 %table{:class => "users"}
   %thead
     %tr
-      %th User name
-      %th Salary
+      %th Name
+      %th Gehalt
       %th 
 
   %tbody
@@ -12,6 +12,6 @@
       %tr
         %td= user.name
         %td= user.salary
-        %td= link_to 'More information', user
+        %td= link_to 'Weitere Details', user
 %br
-= link_to 'Add a new user', new_user_path
+= link_to 'Neue Benutzer zufügen', new_user_path

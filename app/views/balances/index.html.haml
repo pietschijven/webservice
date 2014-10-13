@@ -1,10 +1,10 @@
-%h1 All monthly account balances
+%h1 Alle Monatsabrechnungen
 
 %table{:class => "balances"}
   %thead
     %tr
-      %th Time period
-      %th Total costs
+      %th Zeitraum
+      %th Totalausgaben
       %th 
 
   %tbody
@@ -12,7 +12,7 @@
       %tr
         %td= balance.time_period_string
         %td= sprintf('%.2f',balance.total_balance.round(2))
-        %td= link_to 'More details', balance
+        %td= link_to 'Mehr Informationen', balance
 %br
-= link_to 'Create a new account balance', new_balance_path
+= link_to 'Eine neue Monatsabrechnung machen', new_balance_path
 

@@ -9,20 +9,20 @@
           - @expense.errors.full_messages.each do |message|
             %li= message
     .field
-      = f.label "User name"  
+      = f.label "Benutzer"  
       = f.collection_select :user_id, User.order(:name), :id , :name
     %br
     .field
-      = f.label :cost
+      = f.label "Ausgabe"
       = f.text_field :cost
     %br
     .field
-      = f.label :time_period
+      = f.label "Datum"
       = f.date_select :time_period, :order => [:month, :year]
     %br
     .field
-      = f.label :paid_for_user_id
+      = f.label "Ausgelegt für"
       = f.collection_select :paid_for_user_id, User.order(:name), :id, :name, include_blank: true
     %br
     .actions
-      = f.submit
+      = f.submit "Ändern"

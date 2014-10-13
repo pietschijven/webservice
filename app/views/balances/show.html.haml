@@ -1,10 +1,10 @@
-%h1= "Details of the balance in #{@balance.time_period_string}"
-%h4= "Total net balance in this month: #{sprintf('%.2f',@balance.total_balance.round(2))} Euro"
+%h1= "Details zur Abrechnung im #{@balance.time_period_string}"
+
 %table{:class => "balances"}
   %thead
     %tr
-      %th User
-      %th Amount to pay
+      %th Benutzer
+      %th Betrag
 
   %tbody
     - @balance_check.each do |key, balance|
@@ -12,13 +12,13 @@
         %td= User.find(key).name
         %td= sprintf('%.2f', balance)
         
-%h4 Detailed list of expenses in this month
+%h4 Alle Ausgaben in diesem Monat
 
 %table{:class => "expenses"}
   %thead
     %tr
-      %th User
-      %th Cost
+      %th Benutzer
+      %th Ausgabe
 
   %tbody
     - @expenses.each do |expense|
@@ -27,5 +27,5 @@
         %td= expense.cost
 %br
 
-= link_to 'Edit', edit_balance_path(@balance) |
-= link_to 'Back', balances_path 
+= link_to 'Abrechnung ändern', edit_balance_path(@balance) |
+= link_to 'Zurück', balances_path 

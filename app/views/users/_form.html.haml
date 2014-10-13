@@ -9,12 +9,12 @@
           - @user.errors.full_messages.each do |message|
             %li= message
     .field
-      = f.label :name
+      = f.label "Nahme"
       = f.text_field :name
     %br
     .field
-      = f.label :salary
+      = f.label "Gehalt"
       = f.text_field :salary
     %br
     .actions
-      = f.submit
+      = f.submit "Ändern"

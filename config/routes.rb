@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :users
   resources :balances
   
-  root to: 'expenses#index'
+  root to: 'expenses#new'
 end

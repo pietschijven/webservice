@@ -9,9 +9,9 @@
           - @balance.errors.full_messages.each do |message|
             %li= message
     .field
-      = f.label :date
+      = f.label "Zeitraum"
       = f.date_select :time_period, :order => [:month, :year]
     %br
     .actions
-      = f.submit
+      = f.submit "Ausführen"
     %br

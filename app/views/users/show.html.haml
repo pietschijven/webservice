@@ -1,10 +1,10 @@
-%h1 User details
+%h1 Benutzer
 %p
-  %strong Username:
+  %strong Benutzername:
   = @user.name
 %p
-  %strong Salary:
+  %strong Gehalt:
   = @user.salary
   
-= link_to 'Edit', edit_user_path(@user) |
-= link_to 'Back', users_path 
+= link_to 'Zurück', edit_user_path(@user) |
+= link_to 'Alle Benutzer', users_path 
