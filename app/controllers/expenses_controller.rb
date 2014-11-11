@@ -1,6 +1,5 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
-  before_filter :restrict_access, :if => lambda{ |controller| controller.request.format.json? } 
 
   def index
     @expenses = Expense.all     
@@ -48,10 +47,5 @@ class ExpensesController < ApplicationController
   def expense_params
     params.require(:expense).permit(:user_id, :cost, :paid_for_user_id, :time_period)  
   end
-    
-  def restrict_access
-    authenticate_or_request_with_http_token do |token, options|
-      ApiKey.exists?(access_token: token)
-    end
-  end
+
 end

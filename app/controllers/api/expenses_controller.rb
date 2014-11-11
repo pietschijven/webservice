@@ -1,8 +1,6 @@
 module Api
   
   class ExpensesController < ApiController
-    respond_to :json
-    
     def index
       #respond_with Expense.all
       @expenses = Expense.all
