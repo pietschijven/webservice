@@ -1,8 +1,6 @@
 module Api
   
-  class BalancesController < ApplicationController
-    respond_to :json
-    
+  class BalancesController < ApiController
     def index
       #respond_with Balance.all
       @balances = Balance.all

@@ -1,6 +1,6 @@
 module Api
 
-  class UsersController < ApplicationController
+  class UsersController < ApiController
     respond_to :json
     
     def index

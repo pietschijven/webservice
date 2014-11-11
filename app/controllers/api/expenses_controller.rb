@@ -1,6 +1,6 @@
 module Api
   
-  class ExpensesController < ApplicationController
+  class ExpensesController < ApiController
     respond_to :json
     
     def index
