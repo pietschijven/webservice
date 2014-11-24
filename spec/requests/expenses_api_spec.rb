@@ -42,6 +42,7 @@ describe "Expenses API" do
     let(:json_params) do
       #{ :expense => FactoryGirl.attributes_for(:expense)}.to_json
       FactoryGirl.attributes_for(:expense).to_json
+      { "user_id" => 1, "cost" => 2.45}.to_json
     end
     
     let(:request_headers) do
