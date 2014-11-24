@@ -24,5 +24,9 @@
       = f.label "Ausgelegt für"
       = f.collection_select :paid_for_user_id, User.order(:name), :id, :name, include_blank: true
     %br
+    .field
+      = f.label "Comment"
+      = f.text_area :comment
+    %br
     .actions
-      = f.submit "Ändern"
+      = f.submit "ok"

@@ -4,4 +4,5 @@ json.array! @expenses do |expense|
   json.cost expense.cost
   json.time_period expense.time_period.try(:strftime, "%B %Y")
   json.paid_for_user expense.paid_for_user.try(:name)
+  json.comment expense.comment
 end
