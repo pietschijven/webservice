@@ -5,9 +5,9 @@ Rails.application.routes.draw do
     resources :balances
   end
 
-  resources :expenses
-  resources :users
-  resources :balances
+  #resources :expenses
+  #resources :users
+  #resources :balances
   
-  root to: 'expenses#new'
+  #root to: 'api/expenses#new'
 end
