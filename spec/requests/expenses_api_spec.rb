@@ -4,16 +4,23 @@ describe "Expenses API" do
   #Create a test user for each expense
   before(:each) do
     @test_user = FactoryGirl.create(:user)
+    ApiKey.create
+    @api_token = ApiKey.first.access_token
   end
   
   describe "GET requests" do
+    let(:request_headers) do
+      { "Content-Type" => "application/json",
+      "Authorization" => "Token token=#{@api_token}"}
+    end
+    
     before(:each) do
       @test_expense = FactoryGirl.create(:expense)
     end
 
     describe "#index" do  
       it "should return the list of all expenses" do
-        get api_expenses_path
+        get api_expenses_path, {}, request_headers
       
         body = JSON.parse response.body
         expect(body.first["user"]).to eq @test_user.name
@@ -23,7 +30,7 @@ describe "Expenses API" do
     
     describe "#show" do
       it "should return the correct expense" do
-        get api_expense_path @test_expense
+        get api_expense_path(@test_expense), {}, request_headers
         body = JSON.parse response.body
         expect(body["user"]).to eq @test_user.name
         expect(body["cost"]).to eq @test_expense.cost
@@ -33,15 +40,18 @@ describe "Expenses API" do
   
   describe "POST, PUT and DELETE" do
     let(:json_params) do
-      { :expense => FactoryGirl.attributes_for(:expense)}.to_json
+      #{ :expense => FactoryGirl.attributes_for(:expense)}.to_json
+      FactoryGirl.attributes_for(:expense).to_json
     end
     
     let(:request_headers) do
-      { "Content-Type" => "application/json" }
+      { "Content-Type" => "application/json",
+      "Authorization" => "Token token=#{@api_token}"}
     end
     
     describe "#create" do
       it "should create a new expense" do
+        puts json_params
         post api_expenses_path, json_params, request_headers
         new_expense = Expense.first
         expect(new_expense.user.name).to eq @test_user.name

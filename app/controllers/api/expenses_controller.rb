@@ -26,7 +26,10 @@ module Api
     private 
     
     def expense_params
-      params.require(:expense).permit(:user_id, :cost, :paid_for_user_id, :time_period)
+      #change expense parameters to correct ids
+      params[:expense][:user_id] = User.find_by_name(params[:expense][:user]).id
+      params[:expense][:paid_for_user_id] = User.find_by_name(params[:expense][:paid_for_user]).id
+      params.require(:expense).permit(:user_id, :cost, :paid_for_user_id, :time_period, :comment)
     end
   end
   

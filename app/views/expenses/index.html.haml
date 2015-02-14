@@ -3,11 +3,11 @@
 %table{:class => "expenses"}
   %thead
     %tr
-      %th Benutzer
-      %th Ausgabe
-      %th Datum
-      /
-        %th Ausgelegt für
+      %th User
+      %th Cost
+      %th Date
+      %th Paid for
+      %th Comment
       %th 
 
   %tbody
@@ -16,8 +16,8 @@
         %td= expense.user.name
         %td= expense.cost
         %td= expense.time_period.try(:strftime, "%B %Y")
-        /
-          %td= expense.paid_for_user.try(:name)
+        %td= expense.paid_for_user.try(:name)
+        %td= expense.comment
         %td= link_to 'Details', expense
 %br
 = link_to 'Add a new expense', new_expense_path
