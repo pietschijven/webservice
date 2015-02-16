@@ -17,6 +17,7 @@ class ExpensesController < ApplicationController
 
   def create
     @expense = Expense.new(expense_params)
+    @expense.time_period = Date.parse expense_params[:time_period]
     if @expense.save
       redirect_to @expense, notice: 'Expense was successfully created'
     else
