@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124122850) do
+ActiveRecord::Schema.define(version: 20150217084457) do
 
   create_table "api_keys", force: true do |t|
     t.string "access_token"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20141124122850) do
     t.text "balance_check"
   end
 
+  add_index "balances", ["id"], name: "index_balances_on_id"
+
   create_table "expenses", force: true do |t|
     t.float   "cost"
     t.integer "paid_for_user_id"
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 20141124122850) do
     t.text    "comment"
   end
 
+  add_index "expenses", ["id"], name: "index_expenses_on_id"
   add_index "expenses", ["paid_for_user_id"], name: "index_expenses_on_paid_for_user_id"
   add_index "expenses", ["user_id"], name: "index_expenses_on_user_id"
 
@@ -37,5 +40,7 @@ ActiveRecord::Schema.define(version: 20141124122850) do
     t.string "name"
     t.float  "salary"
   end
+
+  add_index "users", ["id"], name: "index_users_on_id"
 
 end
