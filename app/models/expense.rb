@@ -15,7 +15,7 @@ class Expense < ActiveRecord::Base
   after_save :update_balance
   
   def self.expenses_in_time_period(date)
-    Expense.where time_period: date
+    Expense.where( :time_period => date.beginning_of_month..date.end_of_month )
   end
   
   def self.total_cost(expenses=nil)
