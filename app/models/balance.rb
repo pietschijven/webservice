@@ -67,4 +67,13 @@ class Balance < ActiveRecord::Base
       b.first.update_balance time_period: period
     end
   end
+  
+  def to_string
+    b = balance_check_with_usernames.to_a
+    if b[0][1] > 0
+      return b[0][0] + " has to pay " + b[0][1].round(2).to_s + " Euro to " + b[1][0]
+    else
+      return b[1][0] + " has to pay " + b[1][1].round(2).to_s + " Euro to " + b[0][0]
+    end
+  end
 end

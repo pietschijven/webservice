@@ -1,5 +1,5 @@
 json.array!(@balances) do |balance|
   json.id balance.id
   
-  json.balance balance.balance_check_with_usernames
+  json.balance balance.to_string
 end
