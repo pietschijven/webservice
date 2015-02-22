@@ -29,9 +29,11 @@ class Balance < ActiveRecord::Base
     return b
   end
   
+  #only works with 2 users
   def compute_balance(date)
-    expenses_list = Expense.expenses_in_time_period date
+    expenses_list = Expense.expenses_in_time_period(date).where(paid_for_user_id: nil)
     total_costs = expenses_list.total_cost
+    
     balance = Hash.new
     
     User.all.each do |u|
@@ -39,6 +41,16 @@ class Balance < ActiveRecord::Base
       user_total_costs = user_expenses.total_cost
       user_should_pay = u.salary_fraction * total_costs
       balance[u.id] = user_should_pay - user_total_costs
+    end
+    
+    # Now settle paid_for_user stuff
+    expenses_list = Expense.expenses_in_time_period(date).where.not(paid_for_user_id: nil)
+    User.all.each do |u|
+      user_expenses = expenses_list.where user_id: u.id
+      unless user_expenses.empty?
+        user_advanced_payments = user_expenses.total_costs
+        balance[u.id] -= user_advanced_payments
+      end
     end
     
     return balance
