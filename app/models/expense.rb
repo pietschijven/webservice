@@ -12,6 +12,8 @@ class Expense < ActiveRecord::Base
   
   validates_with ExpensesValidator
   
+  after_save :update_balance
+  
   def self.expenses_in_time_period(date)
     Expense.where time_period: date
   end
@@ -22,5 +24,11 @@ class Expense < ActiveRecord::Base
     else
       where(id: expenses).map{|e| e.cost}.sum
     end
+  end
+  
+  private
+  
+  def update_balance
+    Balance.refresh self.time_period
   end
 end

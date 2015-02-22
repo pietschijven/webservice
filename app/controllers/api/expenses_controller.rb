@@ -37,6 +37,7 @@ module Api
 
       params.require(:expense).permit(:user_id, :cost, :paid_for_user_id, :time_period, :comment)
     end
+    
   end
   
 end

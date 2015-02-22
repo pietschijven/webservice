@@ -44,4 +44,15 @@ class Balance < ActiveRecord::Base
     return balance
   end
   
+  def self.refresh(period)
+    period = period.beginning_of_month
+    b = Balance.where time_period: period
+
+    if b.empty?
+      new_balance = Balance.new time_period: period
+      new_balance.create_balance
+    else
+      b.update_balance time_period: period
+    end
+  end
 end
