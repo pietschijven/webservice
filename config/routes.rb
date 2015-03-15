@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :users
   resources :balances
   
-  root to: 'api/expenses#new'
+  root to: 'api/expenses#index.json'
 end

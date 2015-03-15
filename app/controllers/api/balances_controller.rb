@@ -4,6 +4,7 @@ module Api
     def index
       #respond_with Balance.all
       @balances = Balance.all
+      params_redirect unless params[:time_period].nil?
     end
     
     def show
@@ -29,6 +30,13 @@ module Api
     
     def balance_params
       params.require(:balance).permit(:time_period)
+    end
+    
+    def params_redirect
+      period_param = Date.parse(params[:time_period]).beginning_of_month
+      balance = Balance.find_by_time_period period_param
+      
+      redirect_to api_balance_path balance unless balance.nil?
     end
   end
   
