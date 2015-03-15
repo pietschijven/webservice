@@ -48,7 +48,7 @@ class Balance < ActiveRecord::Base
     User.all.each do |u|
       user_expenses = expenses_list.where user_id: u.id
       unless user_expenses.empty?
-        user_advanced_payments = user_expenses.total_costs
+        user_advanced_payments = user_expenses.total_cost
         balance[u.id] -= user_advanced_payments
       end
     end
